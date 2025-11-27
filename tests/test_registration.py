@@ -19,7 +19,7 @@ def connection():
     conn = sqlite3.connect('users.db')
     yield conn
     conn.close()
-
+ 
 
 def test_create_db(setup_database, connection):
     """Тест создания базы данных и таблицы пользователей."""
@@ -36,11 +36,43 @@ def test_add_new_user(setup_database, connection):
     user = cursor.fetchone()
     assert user, "Пользователь должен быть добавлен в базу данных."
 
+def test_authenticate_user(setup_database, connection):
+    user = authenticate_user('testuser', 'password123')
+    #cur = connection.cursor()
+    #cur.execute("SELECT * FROM users WHERE username='testuser' AND password='password123'")
+    #user = cur.fetchone()
+    assert user is not None
+
+def test_authinticate_nonexistent_user(setup_database, connection):
+
+    result = authenticate_user('nonexistent', '0pass')
+    assert result is False
+
+def test_authenticate_wrong_password(setup_database, connection):
+    add_user('testuser','test@gmail.com','rightpass')
+    test = authenticate_user('testuser', 'wrongpass')
+    assert test is False
+
+
+def test_add_existing_user(setup_database, connection):
+    add_user('testuser', 'testuser@example.com', 'password123')
+    add_user('testuser', 'testuser1@example.com', 'password1234')
+    cursor = connection.cursor()
+    cursor.execute("SELECT COUNT(*) FROM users WHERE username='testuser';")
+    assert cursor.fetchone()[0] == 1
+
+
+def test_display_users(setup_database, connection):
+    add_user('testuser', 'testuser@example.com', 'password123')
+    test = display_users()
+    
+    assert len(test) > 0
+
 # Возможные варианты тестов:
 """
-Тест добавления пользователя с существующим логином.
-Тест успешной аутентификации пользователя.
-Тест аутентификации несуществующего пользователя.
-Тест аутентификации пользователя с неправильным паролем.
-Тест отображения списка пользователей.
+Тест добавления пользователя с существующим логином. 
+Тест успешной аутентификации пользователя. #
+Тест аутентификации несуществующего пользователя.#
+Тест аутентификации пользователя с неправильным паролем #
+Тест отображения списка пользователей. #?
 """

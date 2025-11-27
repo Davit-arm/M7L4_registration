@@ -1,8 +1,8 @@
 import sqlite3
 
-DB_NAME = 'users.db'
+DB_NAME = 'users.db'  
 
-def create_db():
+def create_db(): #1
     with sqlite3.connect(DB_NAME) as conn:
         cursor = conn.cursor()
         cursor.execute('''
@@ -14,7 +14,7 @@ def create_db():
         ''')
         conn.commit()
 
-def add_user(username, email, password):
+def add_user(username, email, password): #2
     try:
         with sqlite3.connect(DB_NAME) as conn:
             cursor = conn.cursor()
@@ -36,6 +36,7 @@ def display_users():
         cursor.execute('SELECT username, email FROM users')
         for user in cursor.fetchall():
             print(f"Логин: {user[0]}, Электронная почта: {user[1]}")
+            return user
 
 
 def user_choice():
@@ -67,3 +68,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+
