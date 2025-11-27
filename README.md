@@ -43,5 +43,5 @@ pip install pytest
 pytest
 ```
 ## Автор Davit-Arm
-<img width="1898" height="910" alt="image" src="https://github.com/user-attachments/assets/a1dca495-bfd0-4a7e-b81e-e37a6c209624" /
+<img width="1898" height="910" alt="image" src="https://github.com/user-attachments/assets/a1dca495-bfd0-4a7e-b81e-e37a6c209624" />
 
