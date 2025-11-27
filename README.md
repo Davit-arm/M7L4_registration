@@ -44,5 +44,6 @@ pytest
 ```
 ## Автор Davit-Arm
 
-<img width="405" height="296" alt="image" src="https://github.com/user-attachments/assets/03838686-8759-475f-a44a-549cdd9afc51" />
+<img width="1898" height="910" alt="image" src="https://github.com/user-attachments/assets/75fabc84-cce5-4ccb-869f-f63d67247c11" />
+
 
