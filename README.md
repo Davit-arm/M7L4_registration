@@ -42,4 +42,7 @@ pip install pytest
 ```bash
 pytest
 ```
-## Автор
+## Автор Davit-Arm
+
+<img width="405" height="296" alt="image" src="https://github.com/user-attachments/assets/03838686-8759-475f-a44a-549cdd9afc51" />
+
